@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dq4scbu6trnvl"]
+
+[ext_resource type="PackedScene" uid="uid://bwlpu4fhfqjk1" path="res://wok.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://7twqlwur3jfn" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c21ryo7ac3ugl" path="res://fishball.tscn" id="2_h2yge"]
+
+[node name="main" type="Node2D" unique_id=2099525183]
+script = ExtResource("1_h2yge")
+
+[node name="Wok" parent="." unique_id=1384695548 instance=ExtResource("1_0xm2m")]
+position = Vector2(-30, -255)
+
+[node name="Fishball" parent="." unique_id=1431031507 instance=ExtResource("2_h2yge")]
+position = Vector2(-165, 65)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1256729842]
+position = Vector2(574, 324)
+zoom = Vector2(0.5, 0.5)

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c21ryo7ac3ugl"]
+
+[ext_resource type="Script" uid="uid://bhihhxo08nc0g" path="res://fishball.gd" id="1_aeryh"]
+[ext_resource type="Texture2D" uid="uid://c77qjkv4mknoo" path="res://fishball.png" id="2_lnac8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rjwxd"]
+friction = 0.5
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uta83"]
+
+[node name="Fishball" type="RigidBody2D" unique_id=1431031507]
+collision_layer = 2
+collision_mask = 3
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_rjwxd")
+continuous_cd = 1
+script = ExtResource("1_aeryh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=42405407]
+texture = ExtResource("2_lnac8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1568884336]
+position = Vector2(2, -5)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_uta83")
