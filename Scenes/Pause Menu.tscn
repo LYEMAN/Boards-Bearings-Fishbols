@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dhgt3uj0co4vs"]
+
+[ext_resource type="Script" uid="uid://dpbtcbt1qdpb1" path="res://Scripts/pause_menu.gd" id="1_02jrc"]
+[ext_resource type="Theme" uid="uid://cahivcytun74k" path="res://Scenes/menu.tres" id="2_1p8f4"]
+[ext_resource type="PackedScene" uid="uid://stsnnq3h5rix" path="res://Scenes/animated_button.tscn" id="3_64b2t"]
+
+[node name="Control" type="Control" unique_id=1006839100]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_02jrc")
+
+[node name="Panel" type="Panel" parent="." unique_id=505048736]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_1p8f4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=355615208]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" parent="Panel/VBoxContainer" unique_id=1624314475 instance=ExtResource("3_64b2t")]
+layout_mode = 2
+text = "Resume"
+
+[node name="Settings" parent="Panel/VBoxContainer" unique_id=1097959782 instance=ExtResource("3_64b2t")]
+layout_mode = 2
+text = "Settings"
+
+[node name="Return" parent="Panel/VBoxContainer" unique_id=747987400 instance=ExtResource("3_64b2t")]
+layout_mode = 2
+text = "Return To Main Men
+"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Return" to="." method="_on_return_pressed"]

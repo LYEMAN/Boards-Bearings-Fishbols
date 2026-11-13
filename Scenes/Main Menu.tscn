@@ -47,7 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Play" parent="Panel/VBoxContainer" unique_id=1624314475 instance=ExtResource("4_udm2q")]
+[node name="Start" parent="Panel/VBoxContainer" unique_id=1624314475 instance=ExtResource("4_udm2q")]
 layout_mode = 2
 
 [node name="Settings" parent="Panel/VBoxContainer" unique_id=107802503 instance=ExtResource("4_udm2q")]
