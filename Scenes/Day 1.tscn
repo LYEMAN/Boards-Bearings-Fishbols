@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cjqq3enj5sayl"]
+
+[ext_resource type="PackedScene" uid="uid://dq4scbu6trnvl" path="res://Scenes/cooking.tscn" id="1_myf68"]
+
+[node name="Day1" type="Node2D" unique_id=346514916]
+
+[node name="main" parent="." unique_id=762239492 instance=ExtResource("1_myf68")]
