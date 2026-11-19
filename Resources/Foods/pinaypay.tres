@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="FoodData" format=3]
+
+[ext_resource type="Script" uid="uid://1aaddfuhte0j" path="res://Scripts/food_data.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://d4hie74het1vn" path="res://Assets/fishball.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"pinaypay"
+display_name = "Pinaypay"
+texture = ExtResource("2_tex")
+size = Vector2(110, 52)
+texture_visible_size = 37.0
+texture_offset = Vector2(-1, 4)
+raw_color = Color(0.960784, 0.878431, 0.639216, 1)
+golden_color = Color(0.788235, 0.482353, 0.117647, 1)
+burnt_color = Color(0.180392, 0.0901961, 0.0313726, 1)
+cook_time_golden = 9.0
+cook_time_burnt = 20.0
+top_side_rate = 0.2
+float_strength = 0.3
+mass = 0.22
+oil_cooling = 0.04
+price = 12
+order_min = 1
+order_max = 3
+order_step = 1
+order_weight = 0.8

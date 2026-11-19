@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://bk6d3nswibotd" path="res://Scripts/fried_item.gd" id="1_item"]
+[ext_resource type="Shader" uid="uid://yka08lgwt67i" path="res://Scripts/fried_item.gdshader" id="2_shader"]
+[ext_resource type="Texture2D" uid="uid://d4hie74het1vn" path="res://Assets/fishball.png" id="3_tex"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_food"]
+friction = 0.5
+bounce = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_food"]
+shader = ExtResource("2_shader")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_food"]
+radius = 20.0
+
+[node name="FriedItem" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 7
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_food")
+continuous_cd = 1
+script = ExtResource("1_item")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_food")
+texture = ExtResource("3_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_food")

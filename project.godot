@@ -15,6 +15,10 @@ run/main_scene="uid://v8cjt8a5i8bm"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+OrderManager="*res://Scripts/order_manager.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -23,6 +27,12 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="Boards- Bearings & Fishbols"
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="food"
+2d_physics/layer_3="utensil"
 
 [physics]
 

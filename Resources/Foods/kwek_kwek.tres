@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="FoodData" format=3]
+
+[ext_resource type="Script" uid="uid://1aaddfuhte0j" path="res://Scripts/food_data.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://d4hie74het1vn" path="res://Assets/fishball.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"kwek_kwek"
+display_name = "Kwek-Kwek"
+texture = ExtResource("2_tex")
+size = Vector2(48, 48)
+texture_visible_size = 37.0
+texture_offset = Vector2(-1, 4)
+raw_color = Color(1, 0.54902, 0.227451, 1)
+golden_color = Color(0.878431, 0.352941, 0.0627451, 1)
+burnt_color = Color(0.227451, 0.0941176, 0.0313726, 1)
+cook_time_golden = 8.0
+cook_time_burnt = 18.0
+top_side_rate = 0.45
+float_strength = 0.35
+mass = 0.14
+oil_cooling = 0.03
+price = 5
+order_min = 3
+order_max = 6
+order_step = 1
+order_weight = 1.2
