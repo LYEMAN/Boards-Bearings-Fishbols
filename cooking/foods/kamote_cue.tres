@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="FoodData" format=3]
+
+[ext_resource type="Script" path="res://cooking/food_data.gd" id="1_food"]
+[ext_resource type="Texture2D" path="res://fishball.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_food")
+id = &"kamote_cue"
+display_name = "Kamote Cue"
+texture = ExtResource("2_tex")
+size = Vector2(90, 36)
+raw_color = Color(0.8784, 0.5412, 0.2353, 1)
+golden_color = Color(0.6588, 0.3294, 0.102, 1)
+burnt_color = Color(0.1647, 0.0706, 0.0314, 1)
+cook_time_golden = 8
+cook_time_burnt = 18
+top_side_rate = 0.25
+float_strength = 0.25
+mass = 0.2
+oil_cooling = 0.05
+price = 12
+order_min = 1
+order_max = 3
+order_step = 1
+order_weight = 1

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bwlpu4fhfqjk1"]
+
+[ext_resource type="Texture2D" uid="uid://dtno8lqe5ky87" path="res://wok.png" id="1_e6io5"]
+[ext_resource type="Script" uid="uid://csv2acmdsilv8" path="res://oil.gd" id="2_ifsf5"]
+
+[node name="Wok" type="StaticBody2D" unique_id=1384695548]
+collision_mask = 0
+
+[node name="WokBack" type="Sprite2D" parent="." unique_id=1170831958]
+z_index = -2
+position = Vector2(606, 602)
+texture = ExtResource("1_e6io5")
+
+[node name="oil" type="Node2D" parent="." unique_id=1295294745]
+z_index = -1
+position = Vector2(65, 386)
+script = ExtResource("2_ifsf5")
+water_size = Vector2(1080, 465.6)
+segment_count = 128
+surface_line_thickness = 15.0
+detect_mask = 3
+buoyancy = 0.898
+metadata/_custom_type_script = "uid://csv2acmdsilv8"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=504184482]
+build_mode = 1
+polygon = PackedVector2Array(62, 388, 78, 510, 112, 597, 163, 671, 248, 749, 339, 813, 434, 845, 482, 861, 709, 861, 883, 800, 987, 730, 1079, 627, 1132, 540, 1147, 478, 1147, 382, 1178, 381, 1166, 528, 1131, 602, 1092, 666, 1030, 749, 957, 813, 886, 848, 794, 877, 734, 893, 649, 896, 507, 885, 394, 873, 319, 843, 257, 813, 204, 772, 165, 721, 112, 650, 75, 586, 46, 522, 36, 473, 38, 381)

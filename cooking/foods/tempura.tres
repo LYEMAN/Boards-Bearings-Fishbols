@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="FoodData" format=3]
+
+[ext_resource type="Script" path="res://cooking/food_data.gd" id="1_food"]
+[ext_resource type="Texture2D" path="res://fishball.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_food")
+id = &"tempura"
+display_name = "Tempura"
+texture = ExtResource("2_tex")
+size = Vector2(80, 30)
+raw_color = Color(0.9529, 0.8902, 0.7647, 1)
+golden_color = Color(0.9098, 0.6275, 0.2353, 1)
+burnt_color = Color(0.1804, 0.1059, 0.0471, 1)
+cook_time_golden = 5
+cook_time_burnt = 13
+top_side_rate = 0.35
+float_strength = 0.4
+mass = 0.1
+oil_cooling = 0.03
+price = 5
+order_min = 2
+order_max = 5
+order_step = 1
+order_weight = 2

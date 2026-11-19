@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Boards Bearing Fishbols"
-run/main_scene="uid://bwlpu4fhfqjk1"
+run/main_scene="uid://dq4scbu6trnvl"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+OrderManager="*res://orders/order_manager.gd"
 
 [display]
 
@@ -23,6 +27,12 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="Boards Bearing Fishbols"
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="food"
+2d_physics/layer_3="utensil"
 
 [physics]
 

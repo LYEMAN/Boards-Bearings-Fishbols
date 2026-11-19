@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="FoodData" format=3]
+
+[ext_resource type="Script" path="res://cooking/food_data.gd" id="1_food"]
+[ext_resource type="Texture2D" path="res://fishball.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_food")
+id = &"banana_cue"
+display_name = "Banana Cue"
+texture = ExtResource("2_tex")
+size = Vector2(100, 40)
+raw_color = Color(0.9137, 0.8275, 0.4157, 1)
+golden_color = Color(0.7216, 0.3961, 0.1059, 1)
+burnt_color = Color(0.1647, 0.0824, 0.0392, 1)
+cook_time_golden = 9
+cook_time_burnt = 19
+top_side_rate = 0.2
+float_strength = 0.25
+mass = 0.25
+oil_cooling = 0.06
+price = 15
+order_min = 1
+order_max = 3
+order_step = 1
+order_weight = 1.2

@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://customers/customer.gd" id="1_cust"]
+
+[node name="Customer" type="Node2D"]
+z_index = -4
+script = ExtResource("1_cust")

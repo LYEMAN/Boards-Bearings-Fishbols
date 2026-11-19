@@ -37,17 +37,20 @@ signal body_exited_oil(body: Node2D)
 ## How many segments on each side of the impact also get pushed.
 @export_range(0, 8) var splash_spread: int = 2
 
-@export_group("Fishball Interaction")
+@export_group("Fryable Interaction")
 ## Bodies in this group are affected by the oil.
-@export var interact_group: StringName = &"fishball"
+@export var interact_group: StringName = &"fryable"
 ## Physics layers the oil can see. Must include the fishball's layer.
 @export_flags_2d_physics var detect_mask: int = 1
 ## How much the oil slows bodies down (applied as extra linear damp).
 @export var oil_drag: float = 3.0
 ## 0 = no buoyancy, 1 = floats exactly, above 1 = rises. Cancels part of gravity inside the oil.
 @export_range(0.0, 2.0) var buoyancy: float = 0.5
-## Cooking speed multiplier fishballs can read (turn it up/down for a hotter/cooler wok).
-@export var heat: float = 1.0
+## Cooking speed multiplier fried items read (the Stove drives this; 1.0 = medium).
+@export var heat: float = 1.0:
+	set(value):
+		heat = value
+		_update_bubbles()
 
 @export_group("Bubbles")
 @export var bubbles_enabled: bool = true
@@ -258,9 +261,16 @@ func _get_body_velocity_y(body: Node) -> float:
 	return 0.0
 
 
+## World-space Y of the resting oil surface (fried items use it for floating).
+func get_surface_global_y() -> float:
+	return global_position.y + surface_pos_y * global_scale.y
+
+
 func _update_bubbles() -> void:
 	if bubbles:
-		bubbles.emitting = bubbles_enabled and not bodies_in_oil.is_empty()
+		# Hotter oil = faster, livelier bubbles. Cold oil doesn't bubble at all.
+		bubbles.emitting = bubbles_enabled and not bodies_in_oil.is_empty() and heat > 0.2
+		bubbles.speed_scale = clampf(heat, 0.4, 2.0)
 
 
 func _on_body_entered(body: Node2D) -> void:

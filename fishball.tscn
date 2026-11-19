@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://c21ryo7ac3ugl"]
+[gd_scene format=3 uid="uid://bxql5ps8j3ed4"]
 
-[ext_resource type="Script" uid="uid://bhihhxo08nc0g" path="res://fishball.gd" id="1_aeryh"]
+[ext_resource type="Script" path="res://fishball.gd" id="1_aeryh"]
 [ext_resource type="Texture2D" uid="uid://c77qjkv4mknoo" path="res://fishball.png" id="2_lnac8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rjwxd"]
