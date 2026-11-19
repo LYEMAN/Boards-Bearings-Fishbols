@@ -6,8 +6,6 @@ extends CanvasLayer
 @export var kitchen: KitchenInput
 @export var tray: ServingTray
 @export var stove: Stove
-## Show a debug "Deliver" button on ready orders until the skateboarding part is hooked up.
-@export var debug_deliver_button: bool = true
 
 var _money_label: Label
 var _toast: Label
@@ -228,12 +226,6 @@ func _make_ticket(order: Order) -> Control:
 		bag.disabled = not OrderManager.can_bag(order, tray)
 		bag.pressed.connect(func(): OrderManager.bag(order, tray))
 		vbox.add_child(bag)
-	elif debug_deliver_button:
-		var deliver := Button.new()
-		deliver.text = "Deliver (debug - skate later)"
-		deliver.focus_mode = Control.FOCUS_NONE
-		deliver.pressed.connect(func(): OrderManager.deliver(order))
-		vbox.add_child(deliver)
 	return panel
 
 

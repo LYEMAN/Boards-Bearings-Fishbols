@@ -1,7 +1,32 @@
 [gd_scene format=3 uid="uid://cjqq3enj5sayl"]
 
-[ext_resource type="PackedScene" uid="uid://dq4scbu6trnvl" path="res://Scenes/cooking.tscn" id="1_myf68"]
+[ext_resource type="Script" path="res://Scripts/day_1.gd" id="1_day1"]
+[ext_resource type="PackedScene" uid="uid://dq4scbu6trnvl" path="res://Scenes/cooking.tscn" id="2_cooking"]
+[ext_resource type="PackedScene" uid="uid://bj40jemgw4nc" path="res://Scenes/skating.tscn" id="3_skating"]
 
 [node name="Day1" type="Node2D" unique_id=346514916]
+script = ExtResource("1_day1")
 
-[node name="main" parent="." unique_id=762239492 instance=ExtResource("1_myf68")]
+[node name="Cooking" parent="." unique_id=762239492 instance=ExtResource("2_cooking")]
+
+[node name="Skating" parent="." unique_id=1832068374 instance=ExtResource("3_skating")]
+position = Vector2(50000, 0)
+
+[node name="SceneSwitcher" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SceneSwitcher"]
+offset_left = 10.0
+offset_top = 10.0
+theme_override_constants/separation = 8
+
+[node name="CookingButton" type="Button" parent="SceneSwitcher/HBoxContainer"]
+focus_mode = 0
+text = "Cooking"
+
+[node name="SkatingButton" type="Button" parent="SceneSwitcher/HBoxContainer"]
+focus_mode = 0
+text = "Skating"
+
+[connection signal="pressed" from="SceneSwitcher/HBoxContainer/CookingButton" to="." method="_on_cooking_button_pressed"]
+[connection signal="pressed" from="SceneSwitcher/HBoxContainer/SkatingButton" to="." method="_on_skating_button_pressed"]
