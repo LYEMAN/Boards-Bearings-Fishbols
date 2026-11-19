@@ -251,7 +251,8 @@ func _on_order_ready(order: Order) -> void:
 
 func _on_order_delivered(order: Order) -> void:
 	var stars := "★".repeat(order.rating) + "☆".repeat(5 - order.rating)
-	show_toast("%s %s  \"%s\"  +P%d" % [order.customer_name, stars, order.feedback, order.payment], Color("b8f5b0"))
+	var tricks := "  (tricks +P%d)" % order.trick_bonus if order.trick_bonus > 0 else ""
+	show_toast("%s %s  \"%s\"  +P%d%s" % [order.customer_name, stars, order.feedback, order.payment, tricks], Color("b8f5b0"))
 	_rebuild_tickets()
 
 

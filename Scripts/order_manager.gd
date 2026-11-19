@@ -6,8 +6,9 @@ extends Node
 ##        bag(order, tray)      -> READY    (bagged, waiting to be delivered by skateboard)
 ##        deliver(order)        -> DELIVERED (paid)   ... or FAILED if a timer runs out.
 ##
-## SKATEBOARDING HOOK: listen to `order_ready`, let the player carry the bag to the customer,
-## then call OrderManager.deliver(order, trick_bonus). Use get_orders(Order.State.READY) to list bags.
+## SKATEBOARDING: SkatingArea (Scripts/skating.gd) spawns a DeliveryNPC in the skatepark on
+## `order_accepted`. When the skater reaches that NPC with a READY bag it calls
+## OrderManager.deliver(order, trick_bonus), where trick_bonus = pesos earned from trick combos.
 
 signal order_created(order: Order)
 signal order_accepted(order: Order)
@@ -109,8 +110,9 @@ func deliver(order: Order, bonus: int = 0) -> void:
 	if order.state != Order.State.READY:
 		return
 	var time_left: float = clampf(order.delivery_time_left / order.delivery_time_total, 0.0, 1.0)
-	# Bad food pays less, fast delivery earns a tip.
-	order.payment = roundi(order.base_price() * (0.4 + 0.6 * order.quality) * (1.0 + 0.25 * time_left)) + bonus
+	# Bad food pays less, fast delivery earns a tip, tricks on the way earn a bonus.
+	order.trick_bonus = maxi(bonus, 0)
+	order.payment = roundi(order.base_price() * (0.4 + 0.6 * order.quality) * (1.0 + 0.25 * time_left)) + order.trick_bonus
 	order.rating = clampi(roundi((order.quality * 0.8 + time_left * 0.2) * 5.0), 1, 5)
 	order.feedback = _feedback_for(order, time_left)
 	order.state = Order.State.DELIVERED
@@ -175,6 +177,8 @@ func _feedback_for(order: Order, time_left: float) -> String:
 		return "Nasunog man ni, boss! (This is burnt!)"
 	if order.raw_count > 0 and order.quality < 0.6:
 		return "Hilaw pa man! (It's still raw!)"
+	if order.trick_bonus >= 20:
+		return "Astig kaayo ka mag-skate! (Sick tricks, boss!)"
 	if order.quality >= 0.85 and time_left > 0.3:
 		return "Lami kaayo! Salamat, boss! (Delicious! Thanks!)"
 	if time_left < 0.15:

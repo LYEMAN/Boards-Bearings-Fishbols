@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bj40jemgw4nc"]
 
 [ext_resource type="PackedScene" uid="uid://ssvm11a7hmdv" path="res://Scenes/Player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" path="res://Scripts/skating.gd" id="2_skate"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovrp4"]
 size = Vector2(2270, 20)
@@ -9,6 +10,7 @@ size = Vector2(2270, 20)
 size = Vector2(20, 631)
 
 [node name="Main" type="Node2D" unique_id=1832068374]
+script = ExtResource("2_skate")
 
 [node name="Node2D" parent="." unique_id=1726502916 instance=ExtResource("1_ig7tw")]
 position = Vector2(-1, 2)

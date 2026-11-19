@@ -24,6 +24,7 @@ var quality: float = 0.0        ## 0..1 average quality of the bagged food
 var burnt_count: int = 0
 var raw_count: int = 0
 var payment: int = 0
+var trick_bonus: int = 0        ## pesos earned from skate tricks on the way (part of payment)
 var rating: int = 0             ## 1..5 stars
 var feedback: String = ""
 
