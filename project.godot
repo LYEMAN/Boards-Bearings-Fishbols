@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 OrderManager="*res://Scripts/order_manager.gd"
+PlayerData="*res://Scripts/player_data.gd"
 
 [display]
 

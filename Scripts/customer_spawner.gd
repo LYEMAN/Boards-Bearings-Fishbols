@@ -4,7 +4,7 @@ extends Node2D
 ## Stall spots are the children Marker2Ds named Spot*, or a default row if there are none.
 
 @export var customer_scene: PackedScene = preload("res://Scenes/customer.tscn")
-@export var spawn_interval := Vector2(7.0, 14.0)
+@export var spawn_interval := Vector2(15.0, 20.0)
 @export var first_customer_delay: float = 2.0
 ## Where customers walk in from (world x).
 @export var enter_x: float = 2300.0

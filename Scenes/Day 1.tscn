@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjqq3enj5sayl"]
 
-[ext_resource type="Script" path="res://Scripts/day_1.gd" id="1_day1"]
+[ext_resource type="Script" uid="uid://5cycyctennxs" path="res://Scripts/day_1.gd" id="1_day1"]
 [ext_resource type="PackedScene" uid="uid://dq4scbu6trnvl" path="res://Scenes/cooking.tscn" id="2_cooking"]
 [ext_resource type="PackedScene" uid="uid://bj40jemgw4nc" path="res://Scenes/skating.tscn" id="3_skating"]
 
@@ -12,21 +12,37 @@ script = ExtResource("1_day1")
 [node name="Skating" parent="." unique_id=1832068374 instance=ExtResource("3_skating")]
 position = Vector2(50000, 0)
 
-[node name="SceneSwitcher" type="CanvasLayer" parent="."]
+[node name="SceneSwitcher" type="CanvasLayer" parent="." unique_id=65661353]
 layer = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SceneSwitcher"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SceneSwitcher" unique_id=228491957]
 offset_left = 10.0
 offset_top = 10.0
 theme_override_constants/separation = 8
 
-[node name="CookingButton" type="Button" parent="SceneSwitcher/HBoxContainer"]
+[node name="CookingButton" type="Button" parent="SceneSwitcher/HBoxContainer" unique_id=2111120547]
+layout_mode = 2
 focus_mode = 0
 text = "Cooking"
 
-[node name="SkatingButton" type="Button" parent="SceneSwitcher/HBoxContainer"]
+[node name="SkatingButton" type="Button" parent="SceneSwitcher/HBoxContainer" unique_id=1951358155]
+layout_mode = 2
 focus_mode = 0
 text = "Skating"
 
+[node name="DayTimerLabel" type="Label" parent="SceneSwitcher/HBoxContainer" unique_id=1219190122]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
+text = "Day 1 | 02:00"
+vertical_alignment = 1
+
+[node name="DayTimer" type="Timer" parent="." unique_id=1664781448]
+wait_time = 120.0
+one_shot = true
+autostart = true
+
 [connection signal="pressed" from="SceneSwitcher/HBoxContainer/CookingButton" to="." method="_on_cooking_button_pressed"]
 [connection signal="pressed" from="SceneSwitcher/HBoxContainer/SkatingButton" to="." method="_on_skating_button_pressed"]
+[connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
