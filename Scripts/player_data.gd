@@ -37,11 +37,14 @@ const STAT_DEFS := {
 	},
 }
 
-var day: int = 1
+var day: int = 0
 var money: int = 0
 var stats: Dictionary = {}
 
 var _syncing_money: bool = false
+
+const DAY_0_SCENE := "res://Scenes/intro.tscn"
+const DAY_1_SCENE := "res://Scenes/Day 1.tscn"
 
 
 func _ready() -> void:
@@ -184,7 +187,7 @@ func load_data() -> Error:
 				if text.is_empty():
 					continue
 				if current_tag == "Day" and text.is_valid_int():
-					day = maxi(1, text.to_int())
+					day = maxi(0, text.to_int())
 				elif current_tag == "Money" and text.is_valid_int():
 					money = maxi(0, text.to_int())
 			XMLParser.NODE_ELEMENT_END:
@@ -195,7 +198,7 @@ func load_data() -> Error:
 
 
 func reset_data() -> void:
-	day = 1
+	day = 0
 	money = 0
 	_init_default_stats()
 	sync_to_order_manager()
@@ -208,3 +211,14 @@ func _on_order_manager_money_changed(total: int) -> void:
 		return
 	money = maxi(0, total)
 	data_changed.emit()
+
+
+func switch_day_scene() -> void:
+	var target_scene: String
+
+	if day == 0:
+		target_scene = DAY_0_SCENE
+	else:
+		target_scene = DAY_1_SCENE
+
+	get_tree().change_scene_to_file(target_scene)
