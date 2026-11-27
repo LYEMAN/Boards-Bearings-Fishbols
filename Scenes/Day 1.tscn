@@ -8,28 +8,45 @@
 script = ExtResource("1_day1")
 
 [node name="Cooking" parent="." unique_id=762239492 instance=ExtResource("2_cooking")]
+position = Vector2(175, 24)
 
 [node name="Skating" parent="." unique_id=1832068374 instance=ExtResource("3_skating")]
 position = Vector2(50000, 0)
 
+<<<<<<< HEAD
 [node name="SceneSwitcher" type="CanvasLayer" parent="." unique_id=65661353]
 layer = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SceneSwitcher" unique_id=228491957]
+=======
+[node name="SceneSwitcher" type="CanvasLayer" parent="." unique_id=1632334325]
+layer = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SceneSwitcher" unique_id=1255587518]
+>>>>>>> origin/new-skating-changes
 offset_left = 10.0
 offset_top = 10.0
 theme_override_constants/separation = 8
 
+<<<<<<< HEAD
 [node name="CookingButton" type="Button" parent="SceneSwitcher/HBoxContainer" unique_id=2111120547]
+=======
+[node name="CookingButton" type="Button" parent="SceneSwitcher/HBoxContainer" unique_id=1440136120]
+>>>>>>> origin/new-skating-changes
 layout_mode = 2
 focus_mode = 0
 text = "Cooking"
 
+<<<<<<< HEAD
 [node name="SkatingButton" type="Button" parent="SceneSwitcher/HBoxContainer" unique_id=1951358155]
+=======
+[node name="SkatingButton" type="Button" parent="SceneSwitcher/HBoxContainer" unique_id=1436323175]
+>>>>>>> origin/new-skating-changes
 layout_mode = 2
 focus_mode = 0
 text = "Skating"
 
+<<<<<<< HEAD
 [node name="DayTimerLabel" type="Label" parent="SceneSwitcher/HBoxContainer" unique_id=1219190122]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -46,3 +63,13 @@ autostart = true
 [connection signal="pressed" from="SceneSwitcher/HBoxContainer/CookingButton" to="." method="_on_cooking_button_pressed"]
 [connection signal="pressed" from="SceneSwitcher/HBoxContainer/SkatingButton" to="." method="_on_skating_button_pressed"]
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
+=======
+[node name="ResetParkButton" type="Button" parent="SceneSwitcher/HBoxContainer" unique_id=824271621]
+layout_mode = 2
+focus_mode = 0
+text = "New Day (Reset Skatepark)"
+
+[connection signal="pressed" from="SceneSwitcher/HBoxContainer/CookingButton" to="." method="_on_cooking_button_pressed"]
+[connection signal="pressed" from="SceneSwitcher/HBoxContainer/SkatingButton" to="." method="_on_skating_button_pressed"]
+[connection signal="pressed" from="SceneSwitcher/HBoxContainer/ResetParkButton" to="." method="_on_reset_park_button_pressed"]
+>>>>>>> origin/new-skating-changes
