@@ -18,6 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 OrderManager="*res://Scripts/order_manager.gd"
+PlayerData="*res://Scripts/player_data.gd"
+DialogueManager="*uid://c3rodes2l3gxb"
+
+[dialogue_manager]
+
+runtime/balloon_path="res://Resources/dialogue/balloon.tscn"
 
 [display]
 
@@ -27,6 +33,10 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="Boards- Bearings & Fishbols"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
@@ -55,6 +65,10 @@ push={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Resources/dialogue/test.dialogue")
 
 [layer_names]
 

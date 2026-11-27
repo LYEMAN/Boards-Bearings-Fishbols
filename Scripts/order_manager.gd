@@ -136,6 +136,15 @@ func add_money(amount: int) -> void:
 	money_changed.emit(money)
 
 
+func set_money(amount: int) -> void:
+	money = maxi(0, amount)
+	money_changed.emit(money)
+
+
+func clear_orders() -> void:
+	orders.clear()
+
+
 func get_orders(state: Order.State) -> Array[Order]:
 	var result: Array[Order] = []
 	for o in orders:
