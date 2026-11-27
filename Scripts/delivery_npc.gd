@@ -115,6 +115,10 @@ func leave(exit_x: float) -> void:
 	mode = Mode.LEAVING
 	_exit_x = exit_x
 	_set_ui_visible(false)
+	var tw := create_tween()
+	tw.tween_interval(0.8)
+	tw.tween_property(self, "modulate:a", 0.0, 0.5)
+	tw.tween_callback(queue_free)
 
 
 # ---------------------------------------------------------------- UI
