@@ -58,4 +58,5 @@ text = "Settings"
 layout_mode = 2
 text = "Quit"
 
+[connection signal="pressed" from="Panel/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

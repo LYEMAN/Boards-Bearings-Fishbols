@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FoodData" format=3]
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://dousro2rmras3"]
 
 [ext_resource type="Script" uid="uid://1aaddfuhte0j" path="res://Scripts/food_data.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://d4hie74het1vn" path="res://Assets/fishball.png" id="2_tex"]
@@ -7,10 +7,10 @@
 script = ExtResource("1_script")
 id = &"tempura"
 display_name = "Tempura"
-texture = ExtResource("2_tex")
+unlock_day = 2
+container_style = 2
+container_color = Color(0.69, 0.718, 0.749, 1)
 size = Vector2(88, 34)
-texture_visible_size = 37.0
-texture_offset = Vector2(-1, 4)
 raw_color = Color(0.960784, 0.921569, 0.839216, 1)
 golden_color = Color(0.831373, 0.572549, 0.164706, 1)
 burnt_color = Color(0.180392, 0.105882, 0.0509804, 1)

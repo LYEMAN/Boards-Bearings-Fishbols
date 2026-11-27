@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 OrderManager="*res://Scripts/order_manager.gd"
+PlayerData="*res://Scripts/player_data.gd"
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [display]
 
@@ -27,6 +29,10 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="Boards- Bearings & Fishbols"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 

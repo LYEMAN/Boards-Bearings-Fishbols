@@ -4,7 +4,7 @@ extends Node2D
 ##   Left-drag a piece        -> carry it (drop in the wok, on the tray, or in the trash)
 ##   Left-drag empty space    -> stir with the skimmer (pushes food around)
 ##   Right-click a piece      -> flip it
-##   Ingredient buttons (HUD) -> call start_drag_new(food) to pull a raw piece out of its bin
+##   Ingredient containers    -> left-drag from a shelf container to pull out a raw piece
 
 signal item_spawned(item: FriedItem)
 
@@ -50,8 +50,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		var mouse: Vector2 = get_global_mouse_position()
 		var item := _item_at(mouse)
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			var container := _container_at(mouse)
 			if item:
 				_grab(item)
+			elif container:
+				if container.is_unlocked():
+					start_drag_new(container.food)
+				else:
+					container.shake()
 			elif stirrer:
 				stirrer.start(mouse)
 			get_viewport().set_input_as_handled()
@@ -60,13 +66,23 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 
 
+## The ingredient container (shelf bin) under the mouse, if any.
+func _container_at(pos: Vector2) -> IngredientContainer:
+	for c in get_tree().get_nodes_in_group(&"ingredient_container"):
+		if c is IngredientContainer and c.is_visible_in_tree() and c.contains_point(pos):
+			return c
+	return null
+
+
 func _input(event: InputEvent) -> void:
 	# Releases are caught in _input so they work even when the drag started on a HUD button.
 	if event is InputEventMouseButton and not event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if held:
 			_release_held()
 		if stirrer and stirrer.active:
-			stirrer.stop()
+			var scooped := stirrer.stop()
+			if scooped:
+				_drop_at_mouse(scooped)
 
 
 func _physics_process(_delta: float) -> void:
@@ -77,9 +93,13 @@ func _physics_process(_delta: float) -> void:
 		held.hold_target = mouse
 	if stirrer and stirrer.active:
 		stirrer.target = mouse
-	var new_hover: FriedItem = held if held else _item_at(mouse)
+	var new_hover: FriedItem = held if held else (stirrer.stuck_item if (stirrer and stirrer.stuck_item) else _item_at(mouse))
 	if new_hover != hovered:
 		hovered = new_hover
+	# Highlight the shelf container under the mouse (only when not carrying anything).
+	var hover_container: IngredientContainer = null if (held or new_hover) else _container_at(mouse)
+	for c in get_tree().get_nodes_in_group(&"ingredient_container"):
+		c.hovered = c == hover_container
 	queue_redraw()
 
 
@@ -96,6 +116,10 @@ func _release_held() -> void:
 	if not is_instance_valid(item):
 		return
 	item.release()
+	_drop_at_mouse(item)
+
+
+func _drop_at_mouse(item: FriedItem) -> void:
 	var mouse: Vector2 = get_global_mouse_position()
 	if trash and trash.contains_point(mouse):
 		item.queue_free()
