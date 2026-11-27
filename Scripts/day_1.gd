@@ -13,6 +13,12 @@ const UPGRADE_SCENE_PATH := "res://Scenes/upgrade_screen.tscn"
 @onready var skating_button: Button = $SceneSwitcher/HBoxContainer/SkatingButton
 @onready var day_timer: Timer = $DayTimer
 @onready var day_timer_label: Label = $SceneSwitcher/HBoxContainer/DayTimerLabel
+<<<<<<< Updated upstream
+=======
+@onready var reset_park_button: Button = $SceneSwitcher/HBoxContainer/ResetParkButton
+
+var current_day: int = 1
+>>>>>>> Stashed changes
 
 
 func _ready() -> void:
@@ -21,8 +27,24 @@ func _ready() -> void:
 	PlayerData.sync_to_order_manager()
 	PlayerData.apply_stats_to_stove(stove)
 	PlayerData.apply_stats_to_player(skater)
+<<<<<<< Updated upstream
 	show_scene(cooking)
 	_update_timer_label()
+=======
+	_update_day_button_text()
+	show_scene(cooking)
+	_update_timer_label()
+
+
+func _process(_delta: float) -> void:
+	_update_timer_label()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_TAB:
+		show_scene(skating if cooking.visible else cooking)
+		get_viewport().set_input_as_handled()
+>>>>>>> Stashed changes
 
 
 func _process(_delta: float) -> void:
@@ -70,3 +92,20 @@ func _on_day_timer_timeout() -> void:
 	OrderManager.paused = true
 	PlayerData.save_data()
 	get_tree().change_scene_to_file(UPGRADE_SCENE_PATH)
+<<<<<<< Updated upstream
+=======
+
+
+func _on_reset_park_button_pressed() -> void:
+	current_day += 1
+	_update_day_button_text()
+	if skating:
+		skating.regenerate_park(current_day, true)
+	if cooking.visible and cooking_hud:
+		cooking_hud.show_toast("Day %d: New skatepark layout generated!" % current_day, Color("ffd166"))
+
+
+func _update_day_button_text() -> void:
+	if reset_park_button:
+		reset_park_button.text = "New Day: Reset Park (Day %d)" % current_day
+>>>>>>> Stashed changes
