@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FoodData" format=3]
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://bqe0sutppnwmn"]
 
 [ext_resource type="Script" uid="uid://1aaddfuhte0j" path="res://Scripts/food_data.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://d4hie74het1vn" path="res://Assets/fishball.png" id="2_tex"]
@@ -7,10 +7,10 @@
 script = ExtResource("1_script")
 id = &"kamote_cue"
 display_name = "Kamote Cue"
-texture = ExtResource("2_tex")
+unlock_day = 5
+container_style = 5
+container_color = Color(0.545, 0.42, 0.29, 1)
 size = Vector2(92, 46)
-texture_visible_size = 37.0
-texture_offset = Vector2(-1, 4)
 raw_color = Color(0.909804, 0.768627, 0.478431, 1)
 golden_color = Color(0.709804, 0.34902, 0.0941176, 1)
 burnt_color = Color(0.164706, 0.0784314, 0.0313726, 1)

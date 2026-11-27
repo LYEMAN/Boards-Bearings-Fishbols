@@ -47,7 +47,8 @@ func create_random_order(customer_name: String, customer_color: Color) -> Order:
 		kinds = 2
 	kinds = mini(kinds, max_foods_per_order)
 
-	var pool: Array[FoodData] = FoodCatalog.all()
+	# Customers only order what's unlocked on the current campaign day.
+	var pool: Array[FoodData] = FoodCatalog.unlocked()
 	for i in kinds:
 		if pool.is_empty():
 			break

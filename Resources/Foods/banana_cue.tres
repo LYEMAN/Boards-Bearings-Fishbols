@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FoodData" format=3]
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://8naukpy46ypy"]
 
 [ext_resource type="Script" uid="uid://1aaddfuhte0j" path="res://Scripts/food_data.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://d4hie74het1vn" path="res://Assets/fishball.png" id="2_tex"]
@@ -7,10 +7,10 @@
 script = ExtResource("1_script")
 id = &"banana_cue"
 display_name = "Banana Cue"
-texture = ExtResource("2_tex")
+unlock_day = 5
+container_style = 4
+container_color = Color(0.627, 0.439, 0.235, 1)
 size = Vector2(105, 44)
-texture_visible_size = 37.0
-texture_offset = Vector2(-1, 4)
 raw_color = Color(0.968627, 0.894118, 0.545098, 1)
 golden_color = Color(0.65098, 0.294118, 0.0705882, 1)
 burnt_color = Color(0.14902, 0.0666667, 0.0235294, 1)

@@ -1,27 +1,12 @@
-[gd_resource type="Resource" script_class="FoodData" format=3]
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://cv4m3kajvqkvu"]
 
 [ext_resource type="Script" uid="uid://1aaddfuhte0j" path="res://Scripts/food_data.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://d4hie74het1vn" path="res://Assets/fishball.png" id="2_tex"]
 
 [resource]
 script = ExtResource("1_script")
-id = &"fishball"
-display_name = "Fishball"
-texture = ExtResource("2_tex")
-size = Vector2(40, 40)
-texture_visible_size = 37.0
-texture_offset = Vector2(-1, 4)
+container_color = Color(0.227, 0.482, 0.835, 1)
 raw_color = Color(0.94902, 0.937255, 0.901961, 1)
 golden_color = Color(0.85098, 0.588235, 0.168627, 1)
 burnt_color = Color(0.168627, 0.101961, 0.054902, 1)
-cook_time_golden = 6.0
-cook_time_burnt = 16.0
-top_side_rate = 0.5
-float_strength = 0.5
-mass = 0.1
-oil_cooling = 0.02
-price = 1
-order_min = 5
-order_max = 10
-order_step = 5
 order_weight = 1.5

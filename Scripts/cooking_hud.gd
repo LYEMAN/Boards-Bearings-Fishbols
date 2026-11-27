@@ -24,7 +24,6 @@ func _ready() -> void:
 	add_child(root)
 
 	_build_top_bar(root)
-	_build_ingredients(root)
 	_build_tickets(root)
 	_build_stove(root)
 
@@ -38,6 +37,17 @@ func _ready() -> void:
 	if stove:
 		stove.level_changed.connect(_on_stove_level_changed)
 	_rebuild_tickets()
+	_announce_new_foods.call_deferred()
+
+
+## "New on the menu!" message on the day a food unlocks.
+func _announce_new_foods() -> void:
+	var day: int = FoodCatalog.current_day()
+	var names: PackedStringArray = []
+	for food in FoodCatalog.newly_unlocked(day):
+		names.append(food.display_name)
+	if day > 1 and not names.is_empty():
+		show_toast("Day %d - New on the menu: %s!" % [day, ", ".join(names)], Color("ffd166"))
 
 
 func _process(_delta: float) -> void:
@@ -94,31 +104,6 @@ func _build_top_bar(root: Control) -> void:
 	_toast.add_theme_color_override("font_outline_color", Color.BLACK)
 	_toast.add_theme_constant_override("outline_size", 6)
 	root.add_child(_toast)
-
-
-func _build_ingredients(root: Control) -> void:
-	var panel := _panel(root)
-	panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT)
-	panel.offset_left = 6
-	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
-	var vbox := VBoxContainer.new()
-	panel.add_child(vbox)
-	vbox.add_child(_label("Ingredients", 16, Color("ffd166")))
-	vbox.add_child(_label("(drag into wok)", 12, Color(1, 1, 1, 0.6)))
-	for food in FoodCatalog.all():
-		var button := Button.new()
-		button.text = food.display_name
-		button.icon = food.texture
-		button.expand_icon = true
-		button.custom_minimum_size = Vector2(150, 40)
-		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		button.add_theme_constant_override("icon_max_width", 36)
-		for state in ["icon_normal_color", "icon_hover_color", "icon_pressed_color", "icon_focus_color"]:
-			button.add_theme_color_override(state, food.raw_color)
-		button.tooltip_text = "P%d each" % food.price
-		button.focus_mode = Control.FOCUS_NONE
-		button.button_down.connect(func(): if kitchen: kitchen.start_drag_new(food))
-		vbox.add_child(button)
 
 
 func _build_tickets(root: Control) -> void:

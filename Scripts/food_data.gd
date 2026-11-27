@@ -6,6 +6,17 @@ extends Resource
 @export var id: StringName = &"fishball"
 @export var display_name: String = "Fishball"
 
+@export_group("Campaign")
+## First campaign day (1-9) this food appears in the ingredient shelf and in customer orders.
+@export_range(1, 9) var unlock_day: int = 1
+
+@export_group("Container")
+## What the raw pieces sit in on the ingredient shelf.
+@export var container_style: ContainerStyle = ContainerStyle.TUB
+@export var container_color: Color = Color("3a7bd5")
+
+enum ContainerStyle { TUB, BOWL, TRAY, PLATE, BASKET, CRATE }
+
 @export_group("Look")
 @export var texture: Texture2D = preload("res://Assets/fishball.png")
 ## Size of ONE piece in the world, in pixels (x = length, y = thickness).
