@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjqq3enj5sayl"]
 
-[ext_resource type="Script" path="res://Scripts/day_1.gd" id="1_day1"]
+[ext_resource type="Script" uid="uid://5cycyctennxs" path="res://Scripts/day_1.gd" id="1_day1"]
 [ext_resource type="PackedScene" uid="uid://dq4scbu6trnvl" path="res://Scenes/cooking.tscn" id="2_cooking"]
 [ext_resource type="PackedScene" uid="uid://bj40jemgw4nc" path="res://Scenes/skating.tscn" id="3_skating"]
 
@@ -8,25 +8,34 @@
 script = ExtResource("1_day1")
 
 [node name="Cooking" parent="." unique_id=762239492 instance=ExtResource("2_cooking")]
+position = Vector2(175, 24)
 
 [node name="Skating" parent="." unique_id=1832068374 instance=ExtResource("3_skating")]
 position = Vector2(50000, 0)
 
-[node name="SceneSwitcher" type="CanvasLayer" parent="."]
+[node name="SceneSwitcher" type="CanvasLayer" parent="." unique_id=1632334325]
 layer = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SceneSwitcher"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SceneSwitcher" unique_id=1255587518]
 offset_left = 10.0
 offset_top = 10.0
 theme_override_constants/separation = 8
 
-[node name="CookingButton" type="Button" parent="SceneSwitcher/HBoxContainer"]
+[node name="CookingButton" type="Button" parent="SceneSwitcher/HBoxContainer" unique_id=1440136120]
+layout_mode = 2
 focus_mode = 0
 text = "Cooking"
 
-[node name="SkatingButton" type="Button" parent="SceneSwitcher/HBoxContainer"]
+[node name="SkatingButton" type="Button" parent="SceneSwitcher/HBoxContainer" unique_id=1436323175]
+layout_mode = 2
 focus_mode = 0
 text = "Skating"
 
+[node name="ResetParkButton" type="Button" parent="SceneSwitcher/HBoxContainer" unique_id=824271621]
+layout_mode = 2
+focus_mode = 0
+text = "New Day (Reset Skatepark)"
+
 [connection signal="pressed" from="SceneSwitcher/HBoxContainer/CookingButton" to="." method="_on_cooking_button_pressed"]
 [connection signal="pressed" from="SceneSwitcher/HBoxContainer/SkatingButton" to="." method="_on_skating_button_pressed"]
+[connection signal="pressed" from="SceneSwitcher/HBoxContainer/ResetParkButton" to="." method="_on_reset_park_button_pressed"]

@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bj40jemgw4nc"]
 
 [ext_resource type="PackedScene" uid="uid://ssvm11a7hmdv" path="res://Scenes/Player.tscn" id="1_ig7tw"]
-[ext_resource type="Script" path="res://Scripts/skating.gd" id="2_skate"]
+[ext_resource type="Script" uid="uid://b4hhmrxkx4844" path="res://Scripts/skating.gd" id="2_skate"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovrp4"]
-size = Vector2(2270, 20)
+size = Vector2(40040, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3t0or"]
-size = Vector2(20, 631)
+size = Vector2(20, 1400)
 
 [node name="Main" type="Node2D" unique_id=1832068374]
 script = ExtResource("2_skate")
@@ -19,31 +19,31 @@ position = Vector2(-1, 2)
 position = Vector2(0, 125)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=583647536]
-position = Vector2(1, -22)
+position = Vector2(0, -22)
 shape = SubResource("RectangleShape2D_ovrp4")
 debug_color = Color(0, 0.5523408, 0.91699, 0.41960785)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=639501574]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=181163548]
-position = Vector2(-1133, -189)
+position = Vector2(-20010, -500)
 shape = SubResource("RectangleShape2D_3t0or")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D2" unique_id=1574421207]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2/StaticBody2D2" unique_id=1710454257]
-position = Vector2(1137, -200)
+position = Vector2(20010, -500)
 shape = SubResource("RectangleShape2D_3t0or")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=100680694]
-z_index = -1
-offset_left = -1123.0
-offset_top = 95.0
-offset_right = 1127.0
-offset_bottom = 124.0
+z_index = -2
+offset_left = -20000.0
+offset_top = 93.0
+offset_right = 20000.0
+offset_bottom = 128.0
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=607918499]
-z_index = -1
+z_index = -2
 offset_left = -62.0
 offset_top = 126.0
 offset_right = 69.0
@@ -51,7 +51,7 @@ offset_bottom = 155.0
 color = Color(1, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="ColorRect2" unique_id=527869040]
-z_index = -1
+z_index = -2
 layout_mode = 0
 offset_left = 374.0
 offset_right = 505.0
@@ -59,7 +59,7 @@ offset_bottom = 29.0
 color = Color(1, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="ColorRect2" unique_id=730443680]
-z_index = -1
+z_index = -2
 layout_mode = 0
 offset_left = -824.0
 offset_top = 1.0
@@ -68,9 +68,15 @@ offset_bottom = 30.0
 color = Color(1, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="ColorRect2/ColorRect3" unique_id=1552293692]
-z_index = -1
+z_index = -2
 layout_mode = 0
 offset_left = 374.0
 offset_right = 505.0
 offset_bottom = 29.0
 color = Color(1, 0, 0, 1)
+
+[node name="StairSets" type="Node2D" parent="."]
+
+[node name="Rails" type="Node2D" parent="."]
+
+[node name="Obstacles" type="Node2D" parent="."]
